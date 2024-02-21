@@ -1,0 +1,6 @@
+// key 為專案名稱 用來讓autohotkey偵測sublime text標題，是否吻合
+// value 為專案路徑
+{
+    "ys_yrpc": "test",
+    "test2": "test2"
+}
