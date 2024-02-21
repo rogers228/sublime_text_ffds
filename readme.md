@@ -8,4 +8,5 @@ files and folders display setting by sublime text project.
 ## 檔案說明
 |檔案|說明|
 |--|--|
-|regist_project.json| 註冊啟用的sublime text project|
+|regist_project.json | 註冊啟用的sublime text project       |
+|switch_windows.ahk  | windows層級，監看視窗切換，觸發執行py |
