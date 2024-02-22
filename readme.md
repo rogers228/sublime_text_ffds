@@ -13,13 +13,14 @@
 |--|--|
 |regist_project.json      | 註冊啟用的sublime text project        |
 |switch_windows.ahk       | windows層級，監看視窗切換，觸發執行py   |
-|sublime_setting.py       | windows層級，監看視窗切換，觸發執行py   |
+|sublime_setting.py       | setting sublime by python             |
 |sublime_hide.py          | project config                        |
 |default.sublime-settings | sublime-settings default value 預設值 |
 
 ## 使用方式
-1. 執行 switch_windows.ahk
-2. 複製 sublime_hide.py 至專案資料夾，設定後儲存即可。
+1. 你的電腦必須安裝 python and autohotkey
+2. 運行 switch_windows.ahk
+3. 複製 sublime_hide.py 到您的專案資料夾底下，設定後儲存即可。
 
 ## 專案config 'sublime_hide.py'
 
