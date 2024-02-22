@@ -30,11 +30,13 @@ Loop
 run_py(){
     Global arr_pj
     Global project
+    mode := 0 ; # mode 設定方式 0依照預設值 1依專案設定值
     for _, value in arr_pj{
         if (project == value) ; 僅針對有註冊的專案
         {
-            ; MsgBox, %project%
-            Run, python sublime_setting.py -project %project% ; 帶參數執行 python 參數為專案名稱
+            mode = 1
+            break  ; 跳出循环
         }
     }
+    Run, python sublime_setting.py -mode %mode% -project %project%, , Hide ; 帶參數執行 python 參數為專案名稱
 }

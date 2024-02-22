@@ -1,0 +1,11 @@
+{
+    "font_size": 12,
+    "color_scheme": "Packages/Theme - Cobalt2/cobalt2.tmTheme",
+    "theme": "Cobalt2.sublime-theme",
+    "translate_tabs_to_spaces": true,
+    "draw_white_space": "all",
+    "file_exclude_patterns": [],
+    "folder_exclude_patterns": [],
+    "ignored_packages": [],
+    "index_files": true
+}
