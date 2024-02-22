@@ -19,9 +19,10 @@
 
 ## 使用方式
 1. 你的電腦必須安裝 python and autohotkey
-2. sublime_setting.py中 找到dic_sublime_settings 設定電腦名稱與路徑。
-3. 複製 sublime_hide.py 到您的專案資料夾底下，設定後儲存即可。
-4. 運行 switch_windows.ahk
+2. regist_project.json  註冊專案名稱及路徑。
+3. sublime_setting.py中 找到dic_sublime_settings 設定電腦名稱與sublime_settings路徑。
+4. 複製 sublime_hide.py 到您的專案資料夾底下，設定後儲存即可。
+5. 運行 switch_windows.ahk
 
 ## 專案config 'sublime_hide.py'
 

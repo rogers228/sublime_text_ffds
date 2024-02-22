@@ -26,7 +26,7 @@ Loop
         {
             ; MsgBox, %curr_pj%  ; 顯示標題
             project := curr_pj   ; 儲存專案名稱
-            run_py() ; 帶參數執行 python
+            run_py() ; 執行 python
         }
     }
 }
@@ -35,11 +35,11 @@ run_py(){
     Global arr_pj
     Global project
     mode := 0 ; # mode 設定方式 0依照預設值 1依專案設定值
-    for _, value in arr_pj{
-        if (project == value) ; 僅針對有註冊的專案
+    for _, item in arr_pj{
+        if (project == item) ; 僅針對有註冊的專案
         {
-            mode = 1
-            break  ; 跳出循环
+            mode := 1
+            break
         }
     }
     Run, python sublime_setting.py -mode %mode% -project %project%, , Hide ; 帶參數執行 python 參數為專案名稱
