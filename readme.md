@@ -27,7 +27,7 @@
 4. 複製 sublime_hide.py 到您的專案資料夾底下，設定後儲存即可。
 5. 運行 switch_windows.ahk
 
-## 專案config 'sublime_hide.py'
+## 專案config: 'sublime_hide.py'
 
 'sublime_hide.py'，放在個別專案資料夾底下，每個專案可以個別設定，
 
