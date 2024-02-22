@@ -4,7 +4,7 @@ import PySimpleGUI as sg
 sg.theme('SystemDefault')
 
 debug = False # True or False
-if True:
+if True: # 針對不同的電腦，進行設定
     dic_sublime_settings = {
         'VM-TESTER': r'C:\Users\user\AppData\Roaming\Sublime Text 3\Packages\User\Preferences.sublime-settings',
     }
