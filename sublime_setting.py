@@ -3,6 +3,7 @@ import click, json, re
 import PySimpleGUI as sg
 sg.theme('SystemDefault')
 
+debug = False # True or False
 if True:
     dic_sublime_settings = {
         'VM-TESTER': r'C:\Users\user\AppData\Roaming\Sublime Text 3\Packages\User\Preferences.sublime-settings',
@@ -11,8 +12,6 @@ if True:
     if computer not in list(dic_sublime_settings.keys()):
         raise TypeError('computer is not found!') # 不同電腦將引發錯誤
     sublime_setting = dic_sublime_settings.get(computer)
-    ps = sublime_setting
-
 
 @click.command() # 命令行入口
 @click.option('-mode', help='your setting mode', required=True, type=int)    # 設定方式 0依照預設值 1依專案設定值
@@ -31,29 +30,35 @@ def main(mode, project):
 
         with open('regist_project.json', encoding='utf-8') as f: # 讀取專案路徑
             dic = json.loads(f.read())
-        # print(f'project path: {dic[project]}')
+
+        if debug:
+            print(f'project path: {dic[project]}')
 
         if project not in list(dic.keys()):
             sg.popup(f'{project} no regist!') # debug
             return
 
         pj_config = os.path.join(dic[project], 'sublime_hide.py') # 取得專案設定config
-        # print(f'project config: {pj_config}')
+        if debug:
+            print(f'project config: {pj_config}')
 
         sys.path.append(dic[project])     # 添加專案路徑
         from sublime_hide import is_hide  # 匯入 is_hide
-        # print(f'project is_hide: {is_hide}')
+        if debug:
+            print(f'project is_hide: {is_hide}')
 
         if is_hide: # 欲隱藏 檔案或資料夾
 
             lis_files   = get_hide_files(pj_config)   # 依專案設定 取得 隱藏檔案  list
             lis_folders = get_hide_folders(pj_config) # 依專案設定 取得 隱藏資料夾 list
-            # print('hide files:')
-            # for e in lis_files:
-            #     print(f'    {e}')
-            # print('\nhide folders:')
-            # for e in lis_folders:
-            #     print(f'    {e}')
+
+            if debug:
+                print('hide files:')
+                for e in lis_files:
+                    print(f'    {e}')
+                print('\nhide folders:')
+                for e in lis_folders:
+                    print(f'    {e}')
 
             with open(sublime_setting, encoding='utf-8') as f: # 讀取目前 sublime_setting
                 dic = json.loads(f.read())
@@ -61,12 +66,14 @@ def main(mode, project):
             dic['file_exclude_patterns'] = lis_files         # 設定 sublime_setting 隱藏檔案
             dic['folder_exclude_patterns'] = lis_folders     # 設定 sublime_setting 隱藏資料夾
             json_str = json.dumps(dic, indent = 4) #格式化
-            # print(json_str)
+            if debug:
+                print(f'\nsublime-settings:\n{json_str}')
+
             with open(sublime_setting, 'w') as f:            # 儲存 sublime_setting
                 f.write(json_str)
 
-    # sg.popup(f'程式執行結束，按ok後離開') # debug
-
+    if debug:
+        sg.popup(f'程式執行結束，按ok後離開') # debug
 
 def get_hide_files(file):
     with open(file, encoding='utf-8') as f:
@@ -90,18 +97,6 @@ def get_hide_folders(file):
         match_content = match.group(1) # 欲隱藏者 使用註解掉 符合使用者習慣
         lis = re.findall(r'#\s*\'([^\']*)\'', match_content)
         return lis
-
-def set_option(lis_files=[], lis_folders=[]):
-    # lis_file     隱藏檔案
-    # lis_folders  隱藏資料夾
-    with open(sublime_setting, encoding='utf-8') as data:
-        dic = json5.loads(data.read())
-    dic['file_exclude_patterns'] = lis_files
-    dic['folder_exclude_patterns'] = lis_folders
-    json_str = json.dumps(dic, indent = 4) #格式化
-    with open(ps, 'w') as outfile:
-        outfile.write(json_str)
-    # print('write hide is finished')
 
 def test1():
     print('test1')

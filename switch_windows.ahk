@@ -1,7 +1,11 @@
-﻿#Persistent ;持續執行
+﻿; C:\Users\user\Documents\Rogers\sublime_text_ffds
+; windows層級，監看視窗切換，觸發執行py
+
+#Persistent ;持續執行
 #SingleInstance force ;禁止多開
 SetTitleMatchMode, 2  ; 設定標題匹配模式
 #Include %A_ScriptDir%\JSON.ahk ;引用
+Menu, Tray, Icon, hide.ico ;設定圖示
 
 FileRead, content_json, %A_ScriptDir%\regist_project.json ;讀取文字檔案 內容應為json
 obj := JSON.Load(content_json) ;解析json文字為object
@@ -39,4 +43,5 @@ run_py(){
         }
     }
     Run, python sublime_setting.py -mode %mode% -project %project%, , Hide ; 帶參數執行 python 參數為專案名稱
+
 }
