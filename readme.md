@@ -18,7 +18,9 @@
 |sublime_hide.py          | project config                        |
 |default.sublime-settings | sublime-settings default value 預設值 |
 
-## 使用方式
+## 切換sublime text後
+完成以下步驟後可達成，切換sublime text後，自動隱藏檔案或資料夾。
+
 1. 你的電腦必須安裝 python and autohotkey
 2. regist_project.json  註冊專案名稱及路徑。
 3. sublime_setting.py中 找到dic_sublime_settings 設定電腦名稱與sublime_settings路徑。
@@ -35,4 +37,18 @@
     # '.gitattributes', --> hide
     # '.gitignore',     --> hide
     'readme.md',        --> display
+```
+
+## 儲存後更新
+完成以下步驟後可達成，儲存'sublime_hide.py'後，立即更新。
+
+1. 安裝 SublimeOnSaveBuild (sublime套件) 設定為儲存後自動執行
+2. sublime text設定: Preferences > Package Setting > SublimeOnSaveBuild > Setting-User
+
+輸入以下
+```json
+{
+  "build_on_save": 1,
+  "filename_filter": "sublime_hide\\.py$",
+}
 ```
