@@ -2,7 +2,7 @@
 **files and folders display by project.**
 
 1. 在sublime text編程時，切換視窗後，Sidebar依據不同的project來隱藏檔案或資料夾
-2. 設定後可立即更新
+2. 儲存config後可立即更新
 
 ## 工作原理
 使用autohotkey監控視窗切換，當切換sublime text視窗時，觸發執行py，
@@ -18,7 +18,7 @@
 |sublime_hide.py          | project config                        |
 |default.sublime-settings | sublime-settings default value 預設值 |
 
-## 切換sublime text後
+## 切換sublime text後更新
 完成以下步驟後可達成，切換sublime text後，自動隱藏檔案或資料夾。
 
 1. 你的電腦必須安裝 python and autohotkey
