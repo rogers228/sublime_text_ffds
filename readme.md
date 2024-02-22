@@ -1,8 +1,8 @@
 # sublime_text_ffds
-files and folders display setting by sublime text project.
+files and folders display setting by project.
 
 1. 在sublime text編程時，切換視窗後，依據不同的project來隱藏檔案或資料夾
-2. 儲存
+2. 設定後立即更新
 
 # 工作原理
 使用ahk監控切換視窗，當切換sublime text視窗時，觸發執行py，讀取專案config 設定sublime-settings
