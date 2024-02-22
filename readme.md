@@ -4,8 +4,9 @@
 1. 在sublime text編程時，切換視窗後，Sidebar依據不同的project來隱藏檔案或資料夾
 2. 設定後可立即更新
 
-# 工作原理
-使用ahk監控切換視窗，當切換sublime text視窗時，觸發執行py，讀取專案config 設定sublime-settings
+## 工作原理
+使用autohotkey監控視窗切換，當切換sublime text視窗時，觸發執行py，
+讀取專案config 設定sublime-settings後，即完成隱藏檔案或資料夾。
 
 ## 檔案說明
 
