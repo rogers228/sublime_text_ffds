@@ -98,10 +98,8 @@ def get_is_hide(file):
     if match:
         is_hide_value = match.group(1)
         is_hide = True if is_hide_value.lower() == 'true' else False
-        print(f'is_hide: {is_hide} type: {type(is_hide)}')
         return is_hide
     else:
-        print('未找到 is_hide 变量')
         return False
 
 def test1():
