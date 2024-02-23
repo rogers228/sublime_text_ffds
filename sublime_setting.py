@@ -50,8 +50,7 @@ def main(mode, project):
         if debug:
             print(f'project config: {pj_config}')
 
-        sys.path.append(dic[project])     # 添加專案路徑
-        from sublime_hide import is_hide  # 匯入 is_hide
+        is_hide = get_is_hide(pj_config) # 依專案設定 取得 is_hide
         if debug:
             print(f'project is_hide: {is_hide}')
 
@@ -104,6 +103,19 @@ def get_hide_folders(file):
         match_content = match.group(1) # 欲隱藏者 使用註解掉 符合使用者習慣
         lis = re.findall(r'#\s*\'([^\']*)\'', match_content)
         return lis
+
+def get_is_hide(file):
+    with open(file, encoding='utf-8') as f:
+        content = f.read()
+    match = re.search(r'is_hide\s*=\s*(\w+)', content)
+    if match:
+        is_hide_value = match.group(1)
+        is_hide = True if is_hide_value.lower() == 'true' else False
+        print(f'is_hide: {is_hide} type: {type(is_hide)}')
+        return is_hide
+    else:
+        print('未找到 is_hide 变量')
+        return False
 
 def test1():
     print('test1')
