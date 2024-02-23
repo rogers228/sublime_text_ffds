@@ -42,6 +42,5 @@ run_py(){
             break
         }
     }
-    Run, python sublime_setting.py -mode %mode% -project %project%, , Hide ; 帶參數執行 python 參數為專案名稱
-
+    Run, python sublime_setting.py -mode %mode% -project %project%, , Hide ; 帶參數執行 python
 }
