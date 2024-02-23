@@ -30,7 +30,7 @@ sublime text 可以進行設定來達到隱藏檔案或資料夾，在專案側�
 4. 複製 sublime_hide.py 到您的專案資料夾底下，設定後儲存即可。
 5. 運行 switch_windows.ahk
 
-## 專案config: 'sublime_hide.py'
+## project config: 'sublime_hide.py'
 
 - 'sublime_hide.py'，放在個別專案資料夾底下，每個專案可以個別設定，
 - 採用註解符號 # 來控制單引號'.gitignore' 中的檔案名稱，進行隱藏，符合編程習慣。
