@@ -73,7 +73,6 @@ def get_hide_files(file):
         match_content = match.group(1) # 欲隱藏者 使用註解掉 符合使用者習慣
         lis = re.findall(r'#\s*\'([^\']*)\'', match_content)
 
-    # lis = list(filter(lambda e: e != os.path.basename(__file__), lis)) # 排除自身
     lis = list(filter(lambda e: e != 'sublime_hide.py', lis)) # 排除 sublime_hide.py
     return lis
 
