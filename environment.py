@@ -13,21 +13,21 @@ lis_projects = [
 
 computer = os.environ['COMPUTERNAME']
 
-# 依照電腦 設定專案資料夾的位置
-dic_base = {
-    'VM-TESTER': r'C:\Users\user\Documents\Rogers',
-}
-
 # 依照電腦 設定sublime-setting位置
 dic_sublime_settings = {
     'VM-TESTER': r'C:\Users\user\AppData\Roaming\Sublime Text 3\Packages\User\Preferences.sublime-settings',
 }
 
+# 依照電腦 設定專案資料夾的 path (專案資料夾的上層)
+dic_base = {
+    'VM-TESTER': r'C:\Users\user\Documents\Rogers',
+}
 
 def test1():
     print(f'your computer name is {computer}.')
     print(f'dic_base is {dic_base[computer]}.')
     print(f'dic_sublime_settings is {dic_sublime_settings[computer]}.')
+    print(f'path_ffds is {path_ffds}')
     print('projects:', lis_projects)
 
 if __name__ == '__main__':

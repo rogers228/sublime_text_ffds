@@ -15,7 +15,7 @@ custom_hide_files = [ # 檔案設定顯示隱藏 使用註解將被隱藏
     'environment.py',
     # 'sublime_setting.py',
     # 'sublime_hide.py',
-    'readme.md',
+    # 'readme.md',
 
     # -- ahk
     # 'hide.ico',
@@ -34,9 +34,16 @@ custom_hide_folders = [
 ]
 
 def main():
+    dic_base = {
+        'VM-TESTER': r'C:\Users\user\Documents\Rogers', # 依照電腦 設定專案資料夾的 path (專案資料夾的上層)
+    }
+    computer = os.environ['COMPUTERNAME']
+    if computer not in list(dic_base.keys()):
+        raise TypeError('computer is not found!') # 不同電腦將引發錯誤
+    path_ffds = os.path.join(dic_base[computer], 'sublime_text_ffds')
     pj_name = os.path.basename(os.path.dirname(__file__))
     command = f'python sublime_setting.py -project {pj_name} -mode 1'
-    cwd = r'C:\Users\user\Documents\Rogers\sublime_text_ffds'
-    subprocess.run(command, cwd=cwd, shell=True, capture_output=True, text=True)
+    subprocess.run(command, cwd=path_ffds, shell=True, capture_output=True, text=True)
+
 if __name__ == '__main__':
     main()
