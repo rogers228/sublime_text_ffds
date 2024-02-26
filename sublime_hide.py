@@ -5,7 +5,7 @@
     # 採用註解符號 # 來控制單引號'' 中的檔案名稱，進行隱藏，符合編程習慣
 import os, subprocess
 
-is_hide = False  # True | False
+is_hide = True  # True | False
 custom_hide_files = [ # 檔案設定顯示隱藏 使用註解將被隱藏
     # -- file
     # '.gitattributes',
