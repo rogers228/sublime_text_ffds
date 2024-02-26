@@ -1,14 +1,11 @@
 import os, sys
 import click, json, re
+from environment import (dic_base, dic_sublime_settings, lis_projects)
 import PySimpleGUI as sg
 sg.theme('SystemDefault')
 
 debug = False # True or False
-if True: # 針對不同的電腦，進行設定
-    dic_sublime_settings = {
-        # 電腦名稱  | sublime-settings path
-        'VM-TESTER': r'C:\Users\user\AppData\Roaming\Sublime Text 3\Packages\User\Preferences.sublime-settings',
-    }
+if True:
     computer = os.environ['COMPUTERNAME']
     if computer not in list(dic_sublime_settings.keys()):
         raise TypeError('computer is not found!') # 不同電腦將引發錯誤
@@ -28,16 +25,14 @@ def main(mode, project):
 
     if mode == 1: # 1依專案設定值
 
-        with open('regist_project.json', encoding='utf-8') as f: # 讀取專案路徑
-            dic = json.loads(f.read())
-
-        if project not in list(dic.keys()):
+        if project not in lis_projects:
             sg.popup(f'{project} no regist!') # debug
             return
 
-        if debug: print(f'project path: {dic[project]}')
+        project_path = os.path.join(dic_base[computer], project)
+        if debug: print(f'project path: {project_path}')
 
-        pj_config = os.path.join(dic[project], 'sublime_hide.py') # 取得專案設定config
+        pj_config = os.path.join(project_path, 'sublime_hide.py') # 取得專案設定config
         if debug: print(f'project config: {pj_config}')
 
         is_hide = get_is_hide(pj_config) # 依專案設定 取得 is_hide
@@ -78,7 +73,8 @@ def get_hide_files(file):
         match_content = match.group(1) # 欲隱藏者 使用註解掉 符合使用者習慣
         lis = re.findall(r'#\s*\'([^\']*)\'', match_content)
 
-    lis = list(filter(lambda e: e != os.path.basename(__file__), lis)) # 排除自身
+    # lis = list(filter(lambda e: e != os.path.basename(__file__), lis)) # 排除自身
+    lis = list(filter(lambda e: e != 'sublime_hide.py', lis)) # 排除 sublime_hide.py
     return lis
 
 def get_hide_folders(file):

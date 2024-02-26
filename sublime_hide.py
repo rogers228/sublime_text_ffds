@@ -5,20 +5,26 @@
     # 採用註解符號 # 來控制單引號'' 中的檔案名稱，進行隱藏，符合編程習慣
 import os, subprocess
 
-is_hide = True  # True | False
+is_hide = False  # True | False
 custom_hide_files = [ # 檔案設定顯示隱藏 使用註解將被隱藏
     # -- file
     # '.gitattributes',
     # '.gitignore',
-    # 'JSON.ahk',
     # 'hide.ico',
+    # 'default.sublime-settings',
+    # 'environment.py',
+    # 'sublime_setting.py',
+    # 'sublime_hide.py',
     'readme.md',
+
+    # -- test
+    'test.bat',
+    # 'test_ahk.ahk',
     ]
 
 custom_hide_folders = [
     # --git
     # '.git',
-
     # --python
     # '__pycache__',
 ]

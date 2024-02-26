@@ -4,15 +4,10 @@
 #Persistent ;持續執行
 #SingleInstance force ;禁止多開
 SetTitleMatchMode, 2  ; 設定標題匹配模式
-#Include %A_ScriptDir%\JSON.ahk ;引用
 Menu, Tray, Icon, hide.ico ;設定圖示
 
 FileRead, content_json, %A_ScriptDir%\regist_project.json ;讀取文字檔案 內容應為json
-obj := JSON.Load(content_json) ;解析json文字為object
-arr_pj := [] ; 建立陣列 值為專案名稱
-for key, _ in obj {
-    arr_pj.Push(key)
-}
+arr_pj := get_projects() ; 取得所有註冊的專案 讀取 environment.py
 
 Loop
 {
@@ -43,4 +38,29 @@ run_py(){
         }
     }
     Run, python sublime_setting.py -mode %mode% -project %project%, , Hide ; 帶參數執行 python
+}
+
+get_projects(){
+    FileRead, FileContent, environment.py
+    is_match = true
+    startIndex := 1
+    arr_pj := []
+    while %is_match%
+    {
+        RegExMatch(FileContent, "\s*\'(.*)\',\s*#\s*project\s*", match, startIndex)
+        if (match1 == ""){
+            is_match = false
+        }
+        else{
+            is_match = true
+            match_vlaue := match1
+            arr_pj.Push(match_vlaue)
+
+            RegExMatch(FileContent, "P)\s*\'(.*)\',\s*#\s*project\s*", match, startIndex)
+            match_pos := MatchPos1
+            match_len := MatchLen1
+            startIndex := match_pos + match_len
+        }
+    }
+    return arr_pj
 }
