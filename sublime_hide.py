@@ -10,15 +10,19 @@ custom_hide_files = [ # 檔案設定顯示隱藏 使用註解將被隱藏
     # -- file
     # '.gitattributes',
     # '.gitignore',
-    # 'hide.ico',
+
     # 'default.sublime-settings',
-    # 'environment.py',
+    'environment.py',
     # 'sublime_setting.py',
     # 'sublime_hide.py',
-    'readme.md',
+    # 'readme.md',
+
+    # -- ahk
+    # 'hide.ico',
+    # 'switch_windows.ahk',
 
     # -- test
-    'test.bat',
+    # 'test.bat',
     # 'test_ahk.ahk',
     ]
 

@@ -5,8 +5,6 @@
 #SingleInstance force ;禁止多開
 SetTitleMatchMode, 2  ; 設定標題匹配模式
 Menu, Tray, Icon, hide.ico ;設定圖示
-
-FileRead, content_json, %A_ScriptDir%\regist_project.json ;讀取文字檔案 內容應為json
 arr_pj := get_projects() ; 取得所有註冊的專案 讀取 environment.py
 
 Loop
