@@ -25,7 +25,7 @@ sublime text 可以進行設定來達到隱藏檔案或資料夾，在專案側�
 完成以下步驟後可達成，切換sublime text後，自動隱藏檔案或資料夾。
 
 1. 你的環境應該是windows系統，電腦必須安裝 python ,autohotkey, 當然包含sublime text。
-2. environment.py 設定專案資料夾路徑，sublime-setting路徑，註冊專案名稱。
+2. environment.py 註冊專案名稱, 設定專案資料夾路徑，sublime-setting路徑。
 3. 複製 sublime_hide.py 到您的專案資料夾底下，設定後儲存即可。
 4. 運行 switch_windows.ahk
 

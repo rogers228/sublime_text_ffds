@@ -15,7 +15,7 @@ custom_hide_files = [ # 檔案設定顯示隱藏 使用註解將被隱藏
     'environment.py',
     # 'sublime_setting.py',
     # 'sublime_hide.py',
-    # 'readme.md',
+    'readme.md',
 
     # -- ahk
     # 'hide.ico',
