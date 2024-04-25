@@ -9,7 +9,9 @@ lis_projects = [
     'ys_yrpc',           # project
     'sublime_text_ffds', # project
     'password_note',     # project
-    'selecter',     # project
+    'selecter',          # project
+    'selecter_spic',     # project
+    'selecter_fwjs',     # project
     ]
 
 computer = os.environ['COMPUTERNAME']
