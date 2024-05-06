@@ -12,6 +12,7 @@ lis_projects = [
     'selecter',          # project
     'selecter_spic',     # project
     'selecter_fwjs',     # project
+    'ys_pnss2',     # project
     ]
 
 computer = os.environ['COMPUTERNAME']
