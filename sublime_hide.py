@@ -36,6 +36,7 @@ custom_hide_folders = [
 def main():
     dic_base = {
         'VM-TESTER': r'C:\Users\user\Documents\Rogers', # 依照電腦 設定專案資料夾的 path (專案資料夾的上層)
+        'LAPTOP-LUGP3JBF': r'C:\Users\USER\Documents',
     }
     computer = os.environ['COMPUTERNAME']
     if computer not in list(dic_base.keys()):
