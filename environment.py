@@ -25,6 +25,7 @@ dic_sublime_settings = {
 # 依照電腦 設定專案資料夾的 path (專案資料夾的上層)
 dic_base = {
     'VM-TESTER': r'C:\Users\user\Documents\Rogers',
+    'LAPTOP-LUGP3JBF': r'C:\Users\USER\Documents',
 }
 
 def test1():

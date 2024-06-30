@@ -8,7 +8,7 @@ debug = False # True or False
 if True:
     computer = os.environ['COMPUTERNAME']
     if computer not in list(dic_sublime_settings.keys()):
-        raise TypeError('computer is not found!') # 不同電腦將引發錯誤
+        raise TypeError(f'computer:{computer} is not found!') # 不同電腦將引發錯誤
     sublime_setting = dic_sublime_settings.get(computer)
 
 @click.command() # 命令行入口
