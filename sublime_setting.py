@@ -1,15 +1,25 @@
-import os, sys
-import click, json, re
-from environment import (dic_base, dic_sublime_settings, lis_projects)
-import PySimpleGUI as sg
-sg.theme('SystemDefault')
-
-debug = False # True or False
 if True:
-    computer = os.environ['COMPUTERNAME']
-    if computer not in list(dic_sublime_settings.keys()):
-        raise TypeError(f'computer:{computer} is not found!') # 不同電腦將引發錯誤
-    sublime_setting = dic_sublime_settings.get(computer)
+    import os, sys
+    import click, json, re
+    import PySimpleGUI as sg
+    sg.theme('SystemDefault')
+
+    # glogal
+    sys.path.append(os.getenv('GRST_PATH'))             # 添加 GRST_PATH 路徑
+    from global_config import OPTION, current_base_path # 匯入 global_config
+    # current_base_path() 目前電腦 的 所有倉庫的上層路徑
+    from tool_path import (_p, full_file)
+    # _p(full_file) 上層路徑
+
+    # environment
+    from environment import lis_projects
+
+
+debug = False # True | False
+if True:
+    if OPTION.get('SUBLIME_SETTING_PATH', '') == '':
+        raise TypeError('SUBLIME_SETTING_PATH is not found!') # 找不到參數
+    sublime_setting = OPTION.get('SUBLIME_SETTING_PATH')[os.environ['COMPUTERNAME']]
 
 @click.command() # 命令行入口
 @click.option('-mode', help='your setting mode', required=True, type=int)    # 設定方式 0依照預設值 1依專案設定值
@@ -29,7 +39,7 @@ def main(mode, project):
             sg.popup(f'{project} no regist!') # debug
             return
 
-        project_path = os.path.join(dic_base[computer], project)
+        project_path = os.path.join(current_base_path(), project)
         if debug: print(f'project path: {project_path}')
 
         pj_config = os.path.join(project_path, 'sublime_hide.py') # 取得專案設定config
@@ -103,3 +113,4 @@ def test1():
 if __name__ == '__main__':
     # test1()
     main()
+

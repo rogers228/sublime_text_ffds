@@ -3,7 +3,6 @@
     # 1. 由ahk監控切換sublime專案後執行：註冊 C:\Users\user\Documents\Rogers\sublime_text_ffds\environment.py
     # 2. 儲存本設定檔後自動執行：此腳本由 SublimeOnSaveBuild (sublime套件) 設定為儲存後自動執行
     # 採用註解符號 # 來控制單引號'' 中的檔案名稱，進行隱藏，符合編程習慣
-import os, subprocess
 
 is_hide = False  # True | False
 custom_hide_files = [ # 檔案設定顯示隱藏 使用註解將被隱藏
@@ -34,15 +33,12 @@ custom_hide_folders = [
 ]
 
 def main():
-    dic_base = {
-        'VM-TESTER': r'C:\Users\user\Documents\Rogers', # 依照電腦 設定專案資料夾的 path (專案資料夾的上層)
-        'LAPTOP-LUGP3JBF': r'C:\Users\USER\Documents',
-    }
-    computer = os.environ['COMPUTERNAME']
-    if computer not in list(dic_base.keys()):
-        raise TypeError('computer is not found!') # 不同電腦將引發錯誤
-    path_ffds = os.path.join(dic_base[computer], 'sublime_text_ffds')
+    import sys, os, subprocess
+    sys.path.append(os.getenv('GRST_PATH'))             # 添加 GRST_PATH 路徑
+    from global_config import current_base_path # 匯入 global_config
+
     pj_name = os.path.basename(os.path.dirname(__file__))
+    path_ffds = os.path.join(current_base_path(), 'sublime_text_ffds') # 固定
     command = f'python sublime_setting.py -project {pj_name} -mode 1'
     subprocess.run(command, cwd=path_ffds, shell=True, capture_output=True, text=True)
 
