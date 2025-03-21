@@ -13,8 +13,11 @@ lis_projects = [
     'selecter_spic',     # project
     'selecter_fwjs',     # project
     'selecter_esbr',     # project
+    'selecter_swaa',     # project
     'ys_pnss2',          # project
     'ys_rd_start',       # project
+    'yspp_202501',       # project
+    'sg_admin',          # project
     ]
 
 computer = os.environ['COMPUTERNAME']
